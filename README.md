@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&style=flat)](https://actions-badge.atrox.dev/licht1stein/pydantic-gen/goto)
 
 
-## What this pakcage does
+## What this package does
 This is a code generation package that converts YML definitions to Pydantic models (either python code or python objects).
 
 
@@ -18,7 +18,7 @@ Here's an [official example](https://pydantic-docs.helpmanual.io/#example) from 
 ## Why generate schemas?
 
 Normally you just program the schemas within your program, but there are several 
-user cases when code generation makes a lot of sense:
+use cases when code generation makes a lot of sense:
 
 * You're programming several apps that use the same schema (think an API server 
 and client library for it)
