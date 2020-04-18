@@ -47,6 +47,7 @@ class SchemaGen:
                 default_value = ""
             else:
                 default_value = f" = {prop.default}"
+
             if prop.get("optional"):
                 prop_type = f"Optional[{prop.type}]"
             else:
@@ -70,3 +71,11 @@ class SchemaGen:
     def to_file(self, filename: Union[Path, str]):
         filename = Path(filename)
         filename.write_text(self.code, encoding="utf8")
+
+    def to_sys(self, module_name: str):
+        import sys
+        from types import ModuleType
+
+        mod = ModuleType(module_name)
+        sys.modules[module_name] = mod
+        exec(self.code, mod.__dict__)
