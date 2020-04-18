@@ -1,6 +1,8 @@
 # Pydantic Schemas Generator
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pydantic-gen)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![PyPI](https://img.shields.io/pypi/v/pydantic-gen)](https://pypi.org/project/pydantic-gen/)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&style=flat)](https://actions-badge.atrox.dev/licht1stein/pydantic-gen/goto)
 
 ## What is Pydantic 
 [Pydantic](https://pydantic-docs.helpmanual.io/) is a python library for data validation and settings management using 
@@ -79,3 +81,19 @@ annotation. Fields: `name` - field name, `type` - field type,
 
 `config` - list of config settings from [Model Config](https://pydantic-docs.helpmanual.io/usage/model_config/)
 of pydantic.
+
+### Testing
+
+Project is fully covered by tests.
+
+### Packaging notice
+This project uses the excellent [poetry](https://python-poetry.org) for packaging. Please read about it and let's all start using
+`pyproject.toml` files as a standard. Read more:
+
+* [PEP 518 -- Specifying Minimum Build System Requirements for Python Projects](https://www.python.org/dev/peps/pep-0518/)
+
+* [What the heck is pyproject.toml?](https://snarky.ca/what-the-heck-is-pyproject-toml/)
+
+* [Clarifying PEP 518 (a.k.a. pyproject.toml)](https://snarky.ca/clarifying-pep-518/)
+
+

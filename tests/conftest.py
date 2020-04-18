@@ -21,5 +21,5 @@ def tmp_dir():
     tmp = Path(__file__).parent / "tmp"
     if not tmp.is_dir():
         tmp.mkdir()
-    yield
+    yield tmp
     shutil.rmtree(tmp)

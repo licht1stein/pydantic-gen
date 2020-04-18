@@ -1,9 +1,16 @@
 import pytest
 
 from pydantic_gen import SchemaGen
+import difflib
 
 
 def test_make_module(example_output, example_generator):
+    output_list = [
+        li
+        for li in difflib.ndiff(example_generator.code, example_output)
+        if li[0] != " "
+    ]
+    assert not output_list
     assert example_generator.code == example_output
 
 
@@ -19,7 +26,7 @@ def test_to_sys(example_generator):
 
 
 def test_to_file(example_generator, example_output, tmp_dir):
-    file = example_generator.to_file("./tmp/_result.py")
+    file = example_generator.to_file(tmp_dir / "_result.py")
     assert file.is_file()
     assert file.read_text(encoding="utf8") == example_output
 

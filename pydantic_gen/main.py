@@ -33,7 +33,7 @@ class SchemaGen:
         self.code = self._make_module()
 
     def _make_module(self) -> str:
-        return self._module.render(schemas=self._make_schemas()) + "\n"
+        return self._module.render(schemas=self._make_schemas())
 
     def _make_schemas(self) -> str:
         schemas = []
