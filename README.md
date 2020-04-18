@@ -4,6 +4,11 @@
 [![PyPI](https://img.shields.io/pypi/v/pydantic-gen)](https://pypi.org/project/pydantic-gen/)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&style=flat)](https://actions-badge.atrox.dev/licht1stein/pydantic-gen/goto)
 
+
+## What this pakcage does
+This is a code generation package that converts YML definitions to Pydantic models (either python code or python objects).
+
+
 ## What is Pydantic 
 [Pydantic](https://pydantic-docs.helpmanual.io/) is a python library for data validation and settings management using 
 python type annotations.
