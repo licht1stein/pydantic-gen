@@ -1,5 +1,6 @@
 # Pydantic Schemas Generator
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![PyPI](https://img.shields.io/pypi/v/pydantic-gen)](https://pypi.org/project/pydantic-gen/)
 
 ## What is Pydantic 
 [Pydantic](https://pydantic-docs.helpmanual.io/) is a python library for data validation and settings management using 
