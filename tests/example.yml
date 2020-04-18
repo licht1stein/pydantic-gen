@@ -1,0 +1,20 @@
+schemas:
+  - name: GeneratedSchema1
+    props:
+      - name: id
+        type: int
+
+  - name: GeneratedSchema2
+    config:
+      - orm_mode: True
+    props:
+      - name: id
+        type: int
+      - name: colors
+        type: List[str]
+        optional: True
+      - name: numbers
+        type: List[int]
+        default: [1, 2, 3]
+      - name: other_schema
+        type: GeneratedSchema1

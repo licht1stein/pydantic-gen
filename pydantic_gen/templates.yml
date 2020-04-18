@@ -11,3 +11,7 @@ schema: |
 
 prop: |
   {{ name }}: {{ type }}{{ default }}
+
+config: |
+          class Config:
+              {{ confs }}

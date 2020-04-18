@@ -23,6 +23,7 @@ class SchemaGen:
     _module: Template = Template(_templates.module)
     _schema: Template = Template(_templates.schema)
     _prop: Template = Template(_templates.prop)
+    _config: Template = Template(_templates.config)
 
     def __attrs_post_init__(self):
         self.filename = Path(self.filename)
@@ -31,46 +32,51 @@ class SchemaGen:
         self.file = yaml_to_box(self.filename)
         self.code = self._make_module()
 
-    def _make_module(self):
+    def _make_module(self) -> str:
         return self._module.render(schemas=self._make_schemas()) + "\n"
 
-    def _make_schemas(self):
+    def _make_schemas(self) -> str:
         schemas = []
         for schema in self.file.schemas:
             schemas.append(self._make_schema(schema))
         return "\n\n\n".join(schemas)
 
-    def _make_schema(self, schema: Box):
-        props = []
-        for prop in schema.props:
-            if not prop.get("default"):
-                default_value = ""
-            else:
-                default_value = f" = {prop.default}"
+    def _make_schema(self, schema: Box) -> str:
+        props = [self._make_prop(prop) for prop in schema.props]
+        config = self._make_config(schema.get("config"))
+        config_text = "\n\n" + 4 * " " + config if config else ""
+        props_text = "\n    ".join(props)
+        return self._schema.render(
+            name=schema.name, props=props_text, config=config_text
+        )
 
-            if prop.get("optional"):
-                prop_type = f"Optional[{prop.type}]"
-            else:
-                prop_type = prop.type
-            props.append(
-                self._prop.render(name=prop.name, type=prop_type, default=default_value)
-            )
-        config = schema.get("config")
-        if not config:
-            conf_text = ""
+    def _make_prop(self, prop: Box) -> str:
+        if not prop.get("default"):
+            default_value = ""
         else:
-            conf_text = "\n\n    class Config:\n"
+            default_value = f" = {prop.default}"
+
+        if prop.get("optional"):
+            prop_type = f"Optional[{prop.type}]"
+        else:
+            prop_type = prop.type
+        return self._prop.render(name=prop.name, type=prop_type, default=default_value)
+
+    def _make_config(self, config: Box) -> str:
+        if not config:
+            return ""
+        else:
+            conf_text = ""
             for conf in config:
                 conf_text += (
-                    f"        {list(conf.keys())[0]} = {list(conf.values())[0]}\n"
+                    4 * " " + f"{list(conf.keys())[0]} = {list(conf.values())[0]}\n"
                 )
-
-        props_text = "\n    ".join(props)
-        return self._schema.render(name=schema.name, props=props_text, config=conf_text)
+        return self._config.render(confs=conf_text)
 
     def to_file(self, filename: Union[Path, str]):
         filename = Path(filename)
         filename.write_text(self.code, encoding="utf8")
+        return filename
 
     def to_sys(self, module_name: str):
         import sys

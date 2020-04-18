@@ -41,8 +41,10 @@ now to ways to use the code:
 1. Save it to a file, and use the file in your program.
 
 ```python
-generated.to_file('generated_schemas.py')
+generated.to_file('example_output.py')
 ```
+
+You can inspect the resulting [example_output.py](./example_output.py)
 
 2. Import the code directly witout saving
 
