@@ -43,9 +43,9 @@ generated = SchemaGen('example.yml')
 ```
 
 The code is now generated and stored in `generated.code` attribute. There are 
-now to ways to use the code:
+two ways to use the code:
 
-1. Save it to a file, and use the file in your program.
+**1. Save it to a file, and use the file in your program.**
 
 ```python
 generated.to_file('example_output.py')
@@ -53,7 +53,7 @@ generated.to_file('example_output.py')
 
 You can inspect the resulting [example_output.py](./example_output.py)
 
-2. Import the code directly witout saving
+**2. Import the generated classed directly without saving**
 
 ```python
 generated.to_sys(module_name='generated_schemas')
