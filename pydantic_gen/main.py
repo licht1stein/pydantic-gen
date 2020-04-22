@@ -53,6 +53,8 @@ class SchemaGen:
     def _make_prop(self, prop: Box) -> str:
         if not prop.get("default"):
             default_value = ""
+        elif prop.type == "str":
+            default_value = f" = '{prop.default}'"
         else:
             default_value = f" = {prop.default}"
 

@@ -16,5 +16,8 @@ schemas:
       - name: numbers
         type: List[int]
         default: [1, 2, 3]
+      - name: text
+        type: str
+        default: default_string
       - name: other_schema
         type: GeneratedSchema1
