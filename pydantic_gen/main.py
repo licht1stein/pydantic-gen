@@ -8,6 +8,14 @@ from jinja2 import Template
 from ruamel import yaml
 
 
+class PydanticSchemageException(Exception):
+    pass
+
+
+class GeneratedCodeExecutionFailed(PydanticSchemageException):
+    pass
+
+
 def yaml_to_box(filename: Union[Path, str]):
     filename = Path(filename)
     if not filename.is_file() and filename.parent != Path(__file__).parent:
@@ -18,9 +26,11 @@ def yaml_to_box(filename: Union[Path, str]):
 @attr.s
 class SchemaGen:
     filename: Union[Path, str] = attr.ib()
+    _additional_imports = []
 
     _templates: Box = yaml_to_box("templates.yml")
     _module: Template = Template(_templates.module)
+    _schemas: Template = Template(_templates.schemas)
     _schema: Template = Template(_templates.schema)
     _prop: Template = Template(_templates.prop)
     _config: Template = Template(_templates.config)
@@ -31,9 +41,21 @@ class SchemaGen:
             raise FileNotFoundError(f"{self.filename.name}")
         self.file = yaml_to_box(self.filename)
         self.code = self._make_module()
+        self._test_module()
+
+    def _test_module(self):
+        try:
+            exec(self.code)
+        except Exception as e:
+            raise GeneratedCodeExecutionFailed(e)
 
     def _make_module(self) -> str:
-        return self._module.render(schemas=self._make_schemas())
+        additional_imports = (
+            "\n".join(self._additional_imports) if self._additional_imports else ""
+        )
+        return self._module.render(
+            schemas=self._make_schemas(), imports=additional_imports
+        )
 
     def _make_schemas(self) -> str:
         schemas = []

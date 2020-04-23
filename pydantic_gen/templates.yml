@@ -1,8 +1,9 @@
 module: |
   from pydantic import BaseModel
   from typing import *
+  {{ imports }}
 
-
+schemas: |
   {{ schemas }}
 
 schema: |
