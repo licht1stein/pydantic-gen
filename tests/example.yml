@@ -19,5 +19,14 @@ schemas:
       - name: text
         type: str
         default: default_string
+      - name: date
+        type: date
+        default: 2020-04-20
+      - name: dt_
+        type: datetime
+        default: 2020-04-20 09:30
+      - name: time
+        type: time
+        default: 09:30
       - name: other_schema
         type: GeneratedSchema1
