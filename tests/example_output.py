@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import *
-import uuid
 import datetime as dt
+import uuid
 
 
 class GeneratedSchema1(BaseModel):

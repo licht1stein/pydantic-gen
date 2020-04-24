@@ -47,7 +47,9 @@ class SchemaGen:
     def _make_module_and_schemas(self) -> str:
         schemas = self._schemas.render(schemas=self._make_schemas())
         additional_imports = (
-            "\n".join(self._additional_imports) if self._additional_imports else ""
+            "\n".join(sorted(list(self._additional_imports)))
+            if self._additional_imports
+            else ""
         )
         module = self._module.render(imports=additional_imports)
         return "\n\n\n".join([module, schemas])
