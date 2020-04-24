@@ -42,7 +42,6 @@ class SchemaGen:
         self.file = yaml_to_box(self.filename)
         self.code = self._make_module_and_schemas()
 
-
     def _make_module_and_schemas(self) -> str:
         schemas = self._schemas.render(schemas=self._make_schemas())
         additional_imports = (
