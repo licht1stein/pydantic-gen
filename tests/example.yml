@@ -30,3 +30,8 @@ schemas:
         default: 09:30
       - name: other_schema
         type: GeneratedSchema1
+
+  - name: UUIDTestSchema
+    props:
+      - name: id
+        type: uuid

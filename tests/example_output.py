@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import *
+import uuid
 import datetime as dt
 
 
@@ -19,3 +20,7 @@ class GeneratedSchema2(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class UUIDTestSchema(BaseModel):
+    id: uuid.UUID

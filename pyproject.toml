@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydantic-gen"
-version = "0.2.7"
+version = "0.2.8"
 description = "Code generator for pydantic schemas"
 authors = ["MB <mb@blaster.ai>"]
 license = "MIT"
@@ -14,12 +14,12 @@ jinja2 = "^2.11.2"
 attrs = "^19.3.0"
 python-box = "^4.2.2"
 "ruamel.yaml" = "^0.16.10"
+black = "^19.10b0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 coverage = "^5.1"
 pytest-cov = "^2.8.1"
-black = "^19.10b0"
 
 [build-system]
 requires = ["poetry>=0.12"]

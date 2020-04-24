@@ -38,3 +38,21 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    if: github.event_name == 'push'
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install poetry
+      run: pip install poetry
+    - name: Upload to pypi.org
+      run: |
+        poetry publish --build -u ${{ secrets.PYPI_USER }} -p ${{ secrets.PYPI_PASSWORD }}

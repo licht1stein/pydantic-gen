@@ -5,6 +5,7 @@ import attr
 from box import Box
 from jinja2 import Template
 
+import black
 from ruamel import yaml
 
 
@@ -41,6 +42,7 @@ class SchemaGen:
             raise FileNotFoundError(f"{self.filename.name}")
         self.file = yaml_to_box(self.filename)
         self.code = self._make_module_and_schemas()
+        self.code = black.format_str(self.code, mode=black.FileMode())
 
     def _make_module_and_schemas(self) -> str:
         schemas = self._schemas.render(schemas=self._make_schemas())
@@ -77,6 +79,10 @@ class SchemaGen:
             self._additional_imports.add("import datetime as dt")
             prop.type = f"dt.{prop.type}"
 
+        if prop.type == "uuid":
+            self._additional_imports.add("import uuid")
+            prop.type = "uuid.UUID"
+
         if prop.get("optional"):
             prop_type = f"Optional[{prop.type}]"
         else:
@@ -106,3 +112,6 @@ class SchemaGen:
         mod = ModuleType(module_name)
         sys.modules[module_name] = mod
         exec(self.code, mod.__dict__)
+
+    def print(self):
+        print(self.code)
