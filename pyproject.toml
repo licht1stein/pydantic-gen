@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "pydantic-gen"
-version = "0.2.6"
-description = "Python wrapper for Coda.io API"
+version = "0.2.7"
+description = "Code generator for pydantic schemas"
 authors = ["MB <mb@blaster.ai>"]
 license = "MIT"
 readme='README.md'
