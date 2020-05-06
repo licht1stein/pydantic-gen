@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Union
+from typing import Union, Dict, Optional
 
 import attr
 from box import Box
@@ -26,7 +26,8 @@ def yaml_to_box(filename: Union[Path, str]):
 
 @attr.s
 class SchemaGen:
-    filename: Union[Path, str] = attr.ib()
+    filename: Optional[Union[Path, str, None]] = attr.ib(default=None)
+    yaml_content: Dict = attr.ib(default=None)
     _additional_imports = set()
 
     _templates: Box = yaml_to_box("templates.yml")
@@ -37,12 +38,27 @@ class SchemaGen:
     _config: Template = Template(_templates.config)
 
     def __attrs_post_init__(self):
+        if not self.yaml_content:
+            self._content_from_file()
+        self.code = self._make_module_and_schemas()
+        self.code = black.format_str(self.code, mode=black.FileMode())
+
+    def _content_from_file(self):
         self.filename = Path(self.filename)
         if not self.filename.is_file():
             raise FileNotFoundError(f"{self.filename.name}")
-        self.file = yaml_to_box(self.filename)
-        self.code = self._make_module_and_schemas()
-        self.code = black.format_str(self.code, mode=black.FileMode())
+        self.yaml_content = yaml_to_box(self.filename)
+
+    @classmethod
+    def from_string(cls, s: str):
+        """Takes a string from reading a yaml file instead of the file itself"""
+        d = yaml.safe_load(s)
+        return cls.from_dict(d)
+
+    @classmethod
+    def from_dict(cls, d: dict):
+        """Takes a dict from reading a yaml file instead of the file itself"""
+        return cls(yaml_content=Box(d))
 
     def _make_module_and_schemas(self) -> str:
         schemas = self._schemas.render(schemas=self._make_schemas())
@@ -56,7 +72,7 @@ class SchemaGen:
 
     def _make_schemas(self) -> str:
         schemas = []
-        for schema in self.file.schemas:
+        for schema in self.yaml_content.schemas:
             schemas.append(self._make_schema(schema))
         return "\n\n\n".join(schemas)
 

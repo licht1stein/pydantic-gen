@@ -34,3 +34,8 @@ def test_to_file(example_generator, example_output, tmp_dir):
 def test_init__file_not_found():
     with pytest.raises(FileNotFoundError):
         SchemaGen("foobar.yml")
+
+
+def test_from_string(example_yaml_string, example_output):
+    result: SchemaGen = SchemaGen.from_string(example_yaml_string)
+    assert result.code == example_output
