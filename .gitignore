@@ -1,3 +1,6 @@
 .idea/
 *.xml
 pre-commit-hook.bat
+_build/
+_static/
+_templates/

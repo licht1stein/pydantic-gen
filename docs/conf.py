@@ -10,25 +10,16 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import os
 import sys
-from pathlib import Path
 
-ROOT_DIR: Path = Path(__file__).parent.parent.parent
-SOURCE_DIR: Path = ROOT_DIR / "pydantic_gen"
-DOCS_DIR: Path = ROOT_DIR / "docs"
-RST_DIR: Path = DOCS_DIR / "rst"
-
-sys.path.insert(0, ROOT_DIR.absolute())
-sys.path.append(SOURCE_DIR.absolute())
-sys.path.append(DOCS_DIR.absolute())
-sys.path.append(RST_DIR.absolute())
+sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
 project = "pydantic-gen"
 copyright = "2020, licht1stein"
 author = "licht1stein"
-# version = '0.3.2'
 
 # -- General configuration ---------------------------------------------------
 
@@ -39,19 +30,13 @@ extensions = [
     "sphinx.ext.autodoc",
 ]
 
-source_suffix = {
-    ".rst": "restructuredtext",
-    ".txt": "restructuredtext",
-    ".md": "markdown",
-}
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["example_output.py"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -- Options for HTML output -------------------------------------------------
 

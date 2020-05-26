@@ -11,8 +11,8 @@ Pydantic Schemas Generator
     :target: https://pypi.org/project/pydantic-gen/
 .. image:: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&style=flat
     :target: https://actions-badge.atrox.dev/licht1stein/pydantic-gen/goto
-.. image:: https://img.shields.io/readthedocs/pydantic-gen   :alt: Read the Docs
-    :target: https://pydantic-gen.readthedocs.io/en/latest/
+.. image:: https://readthedocs.org/projects/pydantic-gen/badge/?version=latest
+    :target: https://pydantic-gen.readthedocs.io/en/latest/?badge=latest
 .. image:: https://img.shields.io/badge/Support-With_coffee!-Green
     :target: https://www.buymeacoffee.com/licht1stein
 
