@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 from typing import Union, Dict, Optional
 
@@ -9,15 +11,13 @@ import black
 from ruamel import yaml
 
 
-class PydanticSchemageException(Exception):
-    pass
+def yaml_to_box(filename: Union[Path, str]) -> Box:
+    """
+    Takes a yaml file name and returns a Box dictionary.
 
-
-class GeneratedCodeExecutionFailed(PydanticSchemageException):
-    pass
-
-
-def yaml_to_box(filename: Union[Path, str]):
+    :param filename: Union[Path, str]
+    :return: Box
+    """
     filename = Path(filename)
     if not filename.is_file() and filename.parent != Path(__file__).parent:
         return yaml_to_box(Path(__file__).parent / filename.name)
@@ -26,8 +26,33 @@ def yaml_to_box(filename: Union[Path, str]):
 
 @attr.s
 class SchemaGen:
+    """
+    Main class of the program that does all the work. Once the code is generated the output is stored in
+    :class:`SchemaGen.code` property. You can choose to either save it to file with :class:`SchemaGen.to_file`
+    or import to sys with :class:`SchemaGen.to_sys`
+
+    Example usage:
+    ::
+        from pydantic_gen import SchemaGen
+
+        generated = SchemaGen('example.yml')
+
+    Once the code is generated you can save it to file:
+    ::
+        generated.to_file('generated_schemas.py')
+
+    Or make it directly importable by adding to `sys.modules`:
+    ::
+        generated.to_sys(module_name='generated_schemas')
+
+    After running `generated.to_sys(module_name='generated_schemas'` your code will be available for import:
+    ::
+        import generated_schemas as gs
+    """
+
     filename: Optional[Union[Path, str, None]] = attr.ib(default=None)
     yaml_content: Dict = attr.ib(default=None)
+    code: str = attr.ib(default=None)
     _additional_imports = set()
 
     _templates: Box = yaml_to_box("templates.yml")
@@ -50,14 +75,25 @@ class SchemaGen:
         self.yaml_content = yaml_to_box(self.filename)
 
     @classmethod
-    def from_string(cls, s: str):
-        """Takes a string from reading a yaml file instead of the file itself"""
+    def from_string(cls, s: str) -> SchemaGen:
+        """
+        Generates code from a yaml string instead of file.
+
+        :param s: yaml string
+        :return: SchemaGen
+        """
         d = yaml.safe_load(s)
         return cls.from_dict(d)
 
     @classmethod
-    def from_dict(cls, d: dict):
-        """Takes a dict from reading a yaml file instead of the file itself"""
+    def from_dict(cls, d: dict) -> SchemaGen:
+        """
+        Alternative constructor. Takes a dict from reading a yaml file instead of the file itself and constructs a
+        :class:`SchemaGen` object.
+
+        :param d: dict
+        :return: SchemaGen
+        """
         return cls(yaml_content=Box(d))
 
     def _make_module_and_schemas(self) -> str:
@@ -118,12 +154,36 @@ class SchemaGen:
                 )
         return self._config.render(confs=conf_text)
 
-    def to_file(self, filename: Union[Path, str]):
+    def to_file(self, filename: Union[Path, str]) -> None:
+        """
+        Saves generated code to file.
+
+        :param filename: Union[Path, str]
+        :return: None
+        """
         filename = Path(filename)
         filename.write_text(self.code, encoding="utf8")
         return filename
 
-    def to_sys(self, module_name: str):
+    def to_sys(self, module_name: str) -> None:
+        """
+        Saves generated code into sys.modules making the classes available for import.
+
+        :param module_name: str : name of the module under which the code will be importable
+        :return: None
+
+        Example:
+        ::
+            from pydantic_gen import SchemaGen
+
+            generated = SchemaGen('example.yml')
+            generated.to_sys(module_name='generated_schemas')
+
+        After running `generated.to_sys(module_name='generated_schemas'` your code will be available for import:
+        ::
+            import generated_schemas as gs
+        """
+
         import sys
         from types import ModuleType
 
@@ -132,4 +192,7 @@ class SchemaGen:
         exec(self.code, mod.__dict__)
 
     def print(self):
+        """
+        Prints the generated code.
+        """
         print(self.code)

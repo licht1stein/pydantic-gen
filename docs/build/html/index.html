@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pydantic-gen &mdash; pydantic-gen  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pydantic-schemagen" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> pydantic-gen
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pydantic-schemagen</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">pydantic-gen</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>pydantic-gen</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pydantic-gen">
+<h1>pydantic-gen<a class="headerlink" href="#pydantic-gen" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pydantic-schemagen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="example_output.html">example_output module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pydantic_gen.html">pydantic_gen package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">tests package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<div class="section" id="pydantic-schemas-generator">
+<h2>Pydantic Schemas Generator<a class="headerlink" href="#pydantic-schemas-generator" title="Permalink to this headline">¶</a></h2>
+<a class="reference external image-reference" href="https://pypi.org/project/pydantic-gen/"><img alt="https://img.shields.io/pypi/pyversions/pydantic-gen" src="https://img.shields.io/pypi/pyversions/pydantic-gen" /></a>
+<a class="reference external image-reference" href="https://github.com/psf/black"><img alt="https://img.shields.io/badge/code%20style-black-000000.svg" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<a class="reference external image-reference" href="https://pypi.org/project/pydantic-gen/"><img alt="https://img.shields.io/pypi/v/pydantic-gen" src="https://img.shields.io/pypi/v/pydantic-gen" /></a>
+<a class="reference external image-reference" href="https://pypi.org/project/pydantic-gen/"><img alt="https://img.shields.io/pypi/dw/pydantic-gen" src="https://img.shields.io/pypi/dw/pydantic-gen" /></a>
+<a class="reference external image-reference" href="https://actions-badge.atrox.dev/licht1stein/pydantic-gen/goto"><img alt="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&amp;style=flat" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Flicht1stein%2Fpydantic-gen%2Fbadge&amp;style=flat" /></a>
+<a class="reference external image-reference" href="https://www.buymeacoffee.com/licht1stein"><img alt="https://img.shields.io/badge/Support-With_coffee!-Green" src="https://img.shields.io/badge/Support-With_coffee!-Green" /></a>
+<div class="section" id="what-this-package-does">
+<h3>What this package does<a class="headerlink" href="#what-this-package-does" title="Permalink to this headline">¶</a></h3>
+<p>This is a code generation package that converts YML definitions to Pydantic models (either python code or python objects).</p>
+</div>
+<div class="section" id="what-is-pydantic">
+<h3>What is Pydantic<a class="headerlink" href="#what-is-pydantic" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://pydantic-docs.helpmanual.io/">Pydantic</a> is a python library for data validation and settings management using
+python type annotations.</p>
+<p>Take a look at the <a class="reference external" href="https://pydantic-docs.helpmanual.io/#example">official example</a> from the Pydantic docs.</p>
+</div>
+<div class="section" id="why-generate-schemas">
+<h3>Why generate schemas?<a class="headerlink" href="#why-generate-schemas" title="Permalink to this headline">¶</a></h3>
+<p>Normally you just program the schemas within your program, but there are several
+use cases when code generation makes a lot of sense:</p>
+<ul class="simple">
+<li><p>You’re programming several apps that use the same schema (think an API server and client library for it)</p></li>
+<li><p>You’re programming in more than one programming language</p></li>
+</ul>
+</div>
+<div class="section" id="getting-started">
+<h3>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
+<p>Using pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pydantic-gen
+</pre></div>
+</div>
+<p>Using <a class="reference external" href="https://python-poetry.org/">poetry</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add pydantic-gen
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h4>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h4>
+<p>First you need to create a YAML file with your desired class schema. See <a class="reference external" href="https://github.com/licht1stein/pydantic-gen/blob/documentation/example.yml">example.yml</a> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic_gen</span> <span class="kn">import</span> <span class="n">SchemaGen</span>
+
+<span class="n">generated</span> <span class="o">=</span> <span class="n">SchemaGen</span><span class="p">(</span><span class="s1">&#39;example.yml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The code is now generated and stored in <cite>generated.code</cite> attribute. There are
+two ways to use the code:</p>
+<ol class="arabic simple">
+<li><p>Save it to a file, and use the file in your program:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generated</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;example_output.py&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can inspect the resulting file in the <a class="reference external" href="https://github.com/licht1stein/pydantic-gen/blob/documentation/example_output.py">example_output.py</a></p>
+<ol class="arabic simple" start="2">
+<li><p>Or directly import the generated classed directly without saving:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generated</span><span class="o">.</span><span class="n">to_sys</span><span class="p">(</span><span class="n">module_name</span><span class="o">=</span><span class="s1">&#39;generated_schemas&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After running <cite>generated.to_sys(module_name=’generated_schemas’</cite> your generated code will be available for import:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">generated_schemas</span> <span class="k">as</span> <span class="nn">gs</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">GeneratedSchema1</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage-pattern">
+<h4>Usage pattern<a class="headerlink" href="#usage-pattern" title="Permalink to this headline">¶</a></h4>
+<p>Recommended usage pattern is creating the yaml files needed for your projects
+and storing them in a separate repository, to achieve maximum consistency across all projects.</p>
+</div>
+<div class="section" id="yaml-file-structure">
+<h4>YAML-file structure<a class="headerlink" href="#yaml-file-structure" title="Permalink to this headline">¶</a></h4>
+<p><cite>schemas</cite> - list of all schemas described</p>
+<p><cite>name</cite> - name of the generated class</p>
+<p><cite>props</cite> - list of properties of the class using python type
+annotation. Fields: <cite>name</cite> - field name, <cite>type</cite> - field type,
+<cite>optional</cite> - bool, if True the type will be wrapped in <cite>Optional</cite>,
+<cite>default</cite> - default value for the field.</p>
+<p><cite>config</cite> - list of config settings from <a class="reference external" href="https://pydantic-docs.helpmanual.io/usage/model_config/">Model Config</a>
+of pydantic.</p>
+</div>
+<div class="section" id="testing">
+<h4>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h4>
+<p>Project is fully covered by tests and uses pytest. To run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest
+</pre></div>
+</div>
+</div>
+<div class="section" id="packaging-notice">
+<h4>Packaging Notice<a class="headerlink" href="#packaging-notice" title="Permalink to this headline">¶</a></h4>
+<p>This project uses the excellent <a class="reference external" href="https://python-poetry.org">poetry</a> for packaging. Please read about it and let’s all start using
+<cite>pyproject.toml</cite> files as a standard. Read more:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/dev/peps/pep-0518/">PEP 518 – Specifying Minimum Build System Requirements for Python Projects</a></p></li>
+<li><p><a class="reference external" href="https://snarky.ca/what-the-heck-is-pyproject-toml/">What the heck is pyproject.toml?</a></p></li>
+<li><p><a class="reference external" href="https://snarky.ca/clarifying-pep-518/">Clarifying PEP 518 (a.k.a. pyproject.toml)</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="pydantic-schemagen" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, licht1stein
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
