@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydantic-gen"
-version = "0.3.4"
+version = "0.3.5"
 description = "Code generator for pydantic schemas"
 authors = ["MB <mb@blaster.ai>"]
 license = "MIT"

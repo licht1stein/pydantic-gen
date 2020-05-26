@@ -1,30 +1,11 @@
-pydantic\_gen package
-=====================
+=============
+Classes
+=============
 
-Submodules
-----------
+SchemaGen
+---------
 
-pydantic\_gen.err module
-------------------------
-
-.. automodule:: pydantic_gen.err
+.. autoclass:: pydantic_gen.SchemaGen
    :members:
-   :undoc-members:
-   :show-inheritance:
-
-pydantic\_gen.main module
--------------------------
-
-.. automodule:: pydantic_gen.main
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 
-Module contents
----------------
-
-.. automodule:: pydantic_gen
-   :members:
-   :undoc-members:
-   :show-inheritance:

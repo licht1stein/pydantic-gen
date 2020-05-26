@@ -14,12 +14,15 @@ import os
 import sys
 
 sys.path.insert(0, os.path.abspath(".."))
+sys.path.append(os.path.abspath("."))
 
 # -- Project information -----------------------------------------------------
 
 project = "pydantic-gen"
 copyright = "2020, licht1stein"
 author = "licht1stein"
+
+master_doc = "index"
 
 # -- General configuration ---------------------------------------------------
 
